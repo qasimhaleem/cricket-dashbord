@@ -1,6 +1,6 @@
 const Display = () => {
     return (
-        <div className="flex justify-around mt-45 bg-gray-500 rounded-lg p-4 mx-20 items-cneter font-serif font-semibold text-white">
+        <div className="flex justify-around mt-35 bg-gray-500 rounded-lg p-4 mx-20 items-cneter font-serif font-semibold text-white">
             <div className="flex items-center gap-2">
                 <h5>Pak</h5>
                 <h5>0-0</h5>

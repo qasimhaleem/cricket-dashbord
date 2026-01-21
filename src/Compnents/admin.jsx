@@ -1,31 +1,71 @@
 import React from 'react'
+import { useState } from 'react'
 
 const Admin = () => {
+    const [bat1, setBat1] = useState("");
+    const [currentBowl, setCurrentBowl] = useState("");
+    const [bowler, setBowler] = useState("");
+    const [bowlList, setBowlList] = useState([]);
+    const [batList, setBatList] = useState([]);
+    // handle batsman 
+    const handleSubmit = () => {
+        console.log("worings")
+        setBat1("");
+        setBatList(prevBat1 => prevBat1.concat(bat1))
+    }
+    // handle bowl submit
+    const handleSubmitBowl = () => {
+        console.log('woring');
+        setBowler("");
+        setBowlList(prevBowler => prevBowler.concat(bowler))
+
+    }
     return (
         <div className='flex gap-20'>
             <div className='grid '>
-                <div className='flex justify-start items-center  m-1 '>
-                    <input type="text" className='border rounded-md p-1 m-2 text-center' />
-                    <button className='bg-blue-600 rounded-lg text-white p-1 '>Add Batsman</button>
+                <div className='flex justify-start items-center  m-1'>
+                    <input type="text"
+                        className='border rounded-md p-1 m-2 text-center'
+                        value={bat1}
+                        onChange={(e) => setBat1(e.target.value)}
+                    />
+                    <button className='bg-blue-600 rounded-lg text-white p-1'
+                        onClick={handleSubmit}>Add Batsman</button>
                 </div>
                 <div className='flex justify-start items-center m-1 '>
-                    <input type="text" className='border rounded-md p-1 m-2 text-center' />
-                    <button className='bg-blue-600 rounded-lg text-white p-1 '>Add Batsman</button>
+                    <input type="text"
+                        className='border rounded-md p-1 m-2 text-center'
+                        value={bowler}
+                        onChange={(e) => setBowler(e.target.value)
+                        } />
+                    <button className='bg-blue-600 rounded-lg text-white p-1' onClick={handleSubmitBowl}>Add Bowler</button>
                 </div>
                 <div className='flex justify-start items-center m-1 '>
-                    <input type="text" className='border rounded-md p-1 m-2 text-center' />
-                    <button className='bg-blue-600 rounded-lg text-white p-1 '>Add Bowler</button>
+                    <input type="number" className='border rounded-md p-1 m-2 text-center' />
+                    <button className='bg-blue-600 rounded-lg text-white p-1'>Current Bowl</button>
                 </div>
             </div>
             <div className='items-center text-center'>Bastman
                 <ul className='bg-sky-200 h-full px-10 underline w-full grid text-center font-mono'>
-                    <li>Baber</li>
+                    {batList.map((item, index) => (
+                        <li key={index} >
+                            {item}
+                        </li>
+                    ))
+                    }
                 </ul>
             </div>
             <div className='text-center'>
                 Bowlers
                 <ul className='bg-sky-200 h-full px-10 underline w-full grid text-center font-mono'>
-                    <li>Baber</li>
+                    {
+                        bowlList.map((item, index) => (
+
+                            <li key={index}>
+                                {item}
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
         </div>
