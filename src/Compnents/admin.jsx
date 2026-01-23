@@ -3,11 +3,15 @@ import { useState } from 'react'
 import Display from './Display';
 const Admin = () => {
     const [bat1, setBat1] = useState("");
-    const [currentBowl, setCurrentBowl] = useState("");
+    const [currentBowl, setCurrentBowl] = useState([]);
     const [bowler, setBowler] = useState("");
     const [bowlList, setBowlList] = useState([]);
     const [batList, setBatList] = useState([]);
-    const [totalRuns, setTotalRuns] = useState(0)
+    const [totalRuns, setTotalRuns] = useState(0);
+    const [totalWict, setTotalWict] = useState(0);
+    const [bowls, setBowls] = useState(0)
+    const [over, setOver] = useState(0)
+
     // handle batsman 
     const handleSubmit = () => {
         console.log("worings")
@@ -25,10 +29,23 @@ const Admin = () => {
         if (currentBowl <= 7) {
             setTotalRuns(prevTotalRuns => Number(prevTotalRuns) + Number(currentBowl));
         }
-        else {
-            console.log("number is to large")
+        else if (currentBowl === 'wct') {
+            setTotalWict(prevTotalWict => Number(prevTotalWict) + 1)
         }
+        else if (currentBowl === 'wd') {
+            setTotalRuns(prevTotalRuns => Number(prevTotalRuns) + 1);
+        }
+        else if (currentBowl > 7) {
+            console.log("number is to large");
+        }
+
+        setBowls(prevBowls =>
+
+            nextBowls = prevBowls + 1);
+
         setCurrentBowl('');
+
+
     }
     return (
         <div className='flex gap-20'>
@@ -51,7 +68,7 @@ const Admin = () => {
                     <button className='bg-blue-600 rounded-lg text-white p-1' onClick={handleSubmitBowl}>Add Bowler</button>
                 </div>
                 <div className='flex justify-start items-center m-1 '>
-                    <input type="number"
+                    <input type="text"
                         className='border rounded-md p-1 m-2 text-center'
                         value={currentBowl}
                         onChange={(e) => setCurrentBowl(e.target.value)} />
@@ -81,7 +98,7 @@ const Admin = () => {
                     }
                 </ul>
             </div>
-            < Display runs={totalRuns} />
+            < Display runs={totalRuns} wict={totalWict} over={over} bowls={bowls} />
         </div>
 
 

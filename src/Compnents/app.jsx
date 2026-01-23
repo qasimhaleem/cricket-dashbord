@@ -10,8 +10,7 @@ const App = () => {
             <div className='flex justify-center items-center bg-sky-200 p-3 font-md text-2xl'>Qasim's  Creation
             </div>
             <Admin />
-            {/*  <Display /> */}
-            <div className='grid mt-2 justify-around items-center bg-violet-800 text-white font-semibold mx-120 rounded-lg px-10'>
+            <div className='grid mt-20 justify-around items-center bg-violet-800 text-white font-semibold mx-120 rounded-lg px-10'>
                 <div className='flex gap-2' >
                     <h5 className='underline'>Imad  </h5>
                     <h5>0 o</h5>
