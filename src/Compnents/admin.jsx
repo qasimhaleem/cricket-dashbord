@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-
+import Display from './Display';
 const Admin = () => {
     const [bat1, setBat1] = useState("");
     const [currentBowl, setCurrentBowl] = useState("");
     const [bowler, setBowler] = useState("");
     const [bowlList, setBowlList] = useState([]);
     const [batList, setBatList] = useState([]);
+    const [totalRuns, setTotalRuns] = useState(0)
     // handle batsman 
     const handleSubmit = () => {
         console.log("worings")
@@ -18,7 +19,16 @@ const Admin = () => {
         console.log('woring');
         setBowler("");
         setBowlList(prevBowler => prevBowler.concat(bowler))
-
+    }
+    //handle current bowl
+    const handleBowl = () => {
+        if (currentBowl <= 7) {
+            setTotalRuns(prevTotalRuns => Number(prevTotalRuns) + Number(currentBowl));
+        }
+        else {
+            console.log("number is to large")
+        }
+        setCurrentBowl('');
     }
     return (
         <div className='flex gap-20'>
@@ -41,8 +51,11 @@ const Admin = () => {
                     <button className='bg-blue-600 rounded-lg text-white p-1' onClick={handleSubmitBowl}>Add Bowler</button>
                 </div>
                 <div className='flex justify-start items-center m-1 '>
-                    <input type="number" className='border rounded-md p-1 m-2 text-center' />
-                    <button className='bg-blue-600 rounded-lg text-white p-1'>Current Bowl</button>
+                    <input type="number"
+                        className='border rounded-md p-1 m-2 text-center'
+                        value={currentBowl}
+                        onChange={(e) => setCurrentBowl(e.target.value)} />
+                    <button className='bg-blue-600 rounded-lg text-white p-1' onClick={handleBowl}>Current Bowl</button>
                 </div>
             </div>
             <div className='items-center text-center'>Bastman
@@ -68,9 +81,12 @@ const Admin = () => {
                     }
                 </ul>
             </div>
+            < Display runs={totalRuns} />
         </div>
 
+
     )
+
 }
 
 export default Admin
