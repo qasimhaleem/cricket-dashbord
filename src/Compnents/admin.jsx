@@ -34,15 +34,21 @@ const Admin = () => {
         }
         else if (currentBowl === 'wd') {
             setTotalRuns(prevTotalRuns => Number(prevTotalRuns) + 1);
+
         }
         else if (currentBowl > 7) {
             console.log("number is to large");
         }
 
-        setBowls(prevBowls =>
-
-            nextBowls = prevBowls + 1);
-
+        setBowls(prevBowls => {
+            const newBowlValue = (prevBowls + 1);
+            if (newBowlValue >= 6) {
+                setOver(o => 0 + 1)
+                return 0;
+            }
+            return newBowlValue;
+        }
+        )
         setCurrentBowl('');
 
 
