@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Display from './Display';
+import App from './app';
 const Admin = () => {
     const [bat1, setBat1] = useState("");
     const [currentBowl, setCurrentBowl] = useState([]);
@@ -46,12 +47,13 @@ const Admin = () => {
                 setOver(o => 0 + 1)
                 return 0;
             }
+            else if (currentBowl === 'wd') {
+                setBowls(prevBowls)
+            }
             return newBowlValue;
         }
         )
         setCurrentBowl('');
-
-
     }
     return (
         <div className='flex gap-20'>
@@ -104,12 +106,17 @@ const Admin = () => {
                     }
                 </ul>
             </div>
-            < Display runs={totalRuns} wict={totalWict} over={over} bowls={bowls} />
+            < Display
+                runs={totalRuns}
+                wict={totalWict}
+                over={over}
+                bowls={bowls}
+                batsman={batList}
+            />
+            <App
+                bowler={bowlList} />
         </div>
-
-
     )
-
 }
 
 export default Admin

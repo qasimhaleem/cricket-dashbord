@@ -7,11 +7,11 @@ const Display = (props) => {
                 <h5>{props.runs}-{props.wict}</h5>
             </div>
             <div className="flex items-center">
-                {props.bowls}.{props.over} overs
+                {props.over}.{props.bowls} overs
             </div>
             <div className="grid items-center">
-                <h6>Baber  0 o</h6>
-                <h6>kohli  0 o</h6>
+                <h6>{props.batsman[0]}  </h6>
+                <h6>{props.batsman[1]}  </h6>
             </div>
         </div>
     )
