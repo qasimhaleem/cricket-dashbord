@@ -3,16 +3,15 @@ import Admin from './admin';
 import Display from './Display';
 import { useState, useEffect } from 'react';
 
-const App = (props) => {
+const App = (prop) => {
     const [currentBowl, setCurrentBowl] = useState()
     return (
         <>
             <div className='flex justify-center items-center bg-sky-200 p-3 font-md text-2xl'>Qasim's  Creation
             </div>
-            <Admin />
             <div className='grid mt-20 justify-around items-center bg-violet-800 text-white font-semibold mx-120 rounded-lg px-10'>
                 <div className='flex gap-2' >
-                    <h5 className='underline'>{props.bowler[0]}  </h5>
+                    <h5 className='underline'>{prop.bal[0]}  </h5>
                     <h5>0 o</h5>
                 </div>
                 <div className=' flex gap-2'>

@@ -13,6 +13,7 @@ const Admin = () => {
     const [bowls, setBowls] = useState(0)
     const [over, setOver] = useState(0)
 
+    console.log(bowlList)
     // handle batsman 
     const handleSubmit = () => {
         console.log("worings")
@@ -113,8 +114,6 @@ const Admin = () => {
                 bowls={bowls}
                 batsman={batList}
             />
-            <App
-                bowler={bowlList} />
         </div>
     )
 }
